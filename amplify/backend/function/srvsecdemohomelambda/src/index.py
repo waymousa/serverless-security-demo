@@ -6,6 +6,11 @@ def handler(event, context):
   sec.getLogonInfo()
   return {
         "statusCode": 200,
-        "headers": {'Content-Type': 'text/html'},
+        "headers": {
+            'Content-Type': 'text/html',
+            'Access-Control-Allow-Headers': 'Content-Type',
+            'Access-Control-Allow-Origin': '*',
+            'Access-Control-Allow-Methods': 'OPTIONS,POST,GET'
+        },
         "body": "hello world"
   }
