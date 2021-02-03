@@ -1,0 +1,42 @@
+{
+    "paths": [
+        {
+            "name": "/home",
+            "lambdaFunction": "srvsecdemohomelambda",
+            "privacy": {
+                "private": true,
+                "auth": [
+                    "/POST",
+                    "/GET",
+                    "/PUT",
+                    "/PATCH",
+                    "/DELETE"
+                ]
+            },
+            "policyResourceName": "/home"
+        }
+    ],
+    "resourceName": "srvsecdemohomeapi",
+    "apiName": "srvsecdemohomeapi",
+    "functionArns": [
+        {
+            "lambdaFunction": "srvsecdemohomelambda"
+        }
+    ],
+    "privacy": {
+        "auth": 1,
+        "unauth": 0,
+        "authRoleName": "amplify-srvsecdemo-dev-134311-authRole",
+        "unAuthRoleName": "amplify-srvsecdemo-dev-134311-unauthRole"
+    },
+    "dependsOn": [
+        {
+            "category": "function",
+            "resourceName": "srvsecdemohomelambda",
+            "attributes": [
+                "Name",
+                "Arn"
+            ]
+        }
+    ]
+}
