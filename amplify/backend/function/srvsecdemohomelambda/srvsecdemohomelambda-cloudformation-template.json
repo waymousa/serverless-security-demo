@@ -71,7 +71,7 @@
         "Timeout": "25",
         "Code": {
           "S3Bucket": "amplify-srvsecdemo-dev-134311-deployment",
-          "S3Key": "amplify-builds/srvsecdemohomelambda-4c6c706e615965485a4b-build.zip"
+          "S3Key": "amplify-builds/srvsecdemohomelambda-71796437664366675371-build.zip"
         }
       }
     },

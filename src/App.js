@@ -15,11 +15,10 @@ function App() {
     try {
       const apiName = 'srvsecdemohomeapi';
       const path = '/home';
-      // const data = await API.get('cryptoapi', '/coins')
-      const data = await API.get(apiName, path, {'responseType': 'text',});
+      //const data = await API.get(apiName, path, {'responseType': 'text',});
+      const data = await API.get(apiName, path, {'responseType': 'json',});
       console.log('data from Lambda REST API: ', data);
-      apiOutput(data.home);
-      console.log(output);
+      apiOutput(data);
     } catch (err) {
       console.log('error fetching data..', err);
     }
