@@ -1,14 +1,67 @@
 import logo from './logo.svg';
 import './App.css';
-import { withAuthenticator } from '@aws-amplify/ui-react'
+import { withAuthenticator, AmplifySignOut } from '@aws-amplify/ui-react'
 import Amplify, { API } from 'aws-amplify';
 import awsconfig from './aws-exports';
+import React, { useEffect, useState } from 'react'
 
 Amplify.configure(awsconfig);
 
 function App() {
+ 
+ const [output, apiOutput] = useState([]);
+ 
+ async function getHomePage() {
+    try {
+      const apiName = 'srvsecdemohomeapi';
+      const path = '/home';
+      // const data = await API.get('cryptoapi', '/coins')
+      const data = await API.get(apiName, path, {'responseType': 'json',});
+      console.log('data from Lambda REST API: ', data);
+      apiOutput(data.home);
+    } catch (err) {
+      console.log('error fetching data..', err);
+    }
+  }
   
-  return API.get('srvsecdemohomeapi', '/home');
+ useEffect(() => {
+    getHomePage();
+  }, []);
+ 
+ return(
+   <div className="App">
+    <div className="heading">
+     <h1>Amplify Todo</h1>
+    </div>
+    <div>
+     <h2>{output}</h2>
+    </div>
+    <form className="getHomePage" onSubmit={getHomePage}>
+     <fieldset>
+      <label>
+       <p>Name</p>
+       <input name="name" />
+      </label>
+     </fieldset>
+     <button type="submit">Submit</button>
+    </form>
+    <div className="sign-out">
+     <AmplifySignOut/>
+    </div>
+   </div>
+  );
+ 
+ //return (
+ //  <div className="App">
+ //   <div className="heading">
+ //    <h1>Amplify Todo</h1>
+ //   <div className="sign-out">
+ //    <AmplifySignOut/>
+ //   </div>
+ //  </div>
+ // );
+  
+  //return API.get('srvsecdemohomeapi', '/home');
   
   //const apiName = 'srvsecdemohomeapi';
   //const path = '/home';

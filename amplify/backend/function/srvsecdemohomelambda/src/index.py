@@ -3,14 +3,15 @@ import security as sec
 def handler(event, context):
   print('received event:')
   print(event)
-  sec.getLogonInfo()
+  #sec.getLogonInfo()
+  body = '{"page" : "home", "message" : "hello world", "layerMessage" : %s }' % sec.getLogonInfo()
   return {
         "statusCode": 200,
         "headers": {
-            'Content-Type': 'text/html',
+            'Content-Type': 'application/json',
             'Access-Control-Allow-Headers': 'Content-Type',
             'Access-Control-Allow-Origin': '*',
             'Access-Control-Allow-Methods': 'OPTIONS,POST,GET'
         },
-        "body": "hello world"
+        "body": body
   }
