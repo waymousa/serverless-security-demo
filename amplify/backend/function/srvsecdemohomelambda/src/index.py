@@ -4,7 +4,7 @@ def handler(event, context):
   print('received event:')
   print(event)
   #sec.getLogonInfo()
-  body = sec.getLogonInfo()
+  body = "%s" % sec.getLogonInfo()
   return {
         "statusCode": 200,
         "headers": {
@@ -13,5 +13,5 @@ def handler(event, context):
             'Access-Control-Allow-Origin': '*',
             'Access-Control-Allow-Methods': 'OPTIONS,POST,GET'
         },
-        "body": body
+        "body": "hello world"
   }
